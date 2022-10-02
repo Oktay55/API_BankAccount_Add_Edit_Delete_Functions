@@ -1,0 +1,13 @@
+<suite name="Regression Test Suite">
+
+    <test name="Regression Test">
+
+        <classes>
+
+            <class name="BankAccountFunctionalityPojo"></class>
+
+        </classes>
+
+    </test>
+
+</suite>

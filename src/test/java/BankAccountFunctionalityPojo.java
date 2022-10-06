@@ -53,14 +53,14 @@ public class BankAccountFunctionalityPojo {
     @Test(priority = 1)
     public void addUserBankAccountTest() {
 
-        user.setName("John Cena");
-        user.setIban("AC98 64");
-        user.setIntegrationCode("344");
+        user.setName("fdgdfgdfg ihhiih");
+        user.setIban("QT75 91");
+        user.setIntegrationCode("843");
         user.setCurrency("USD");
         user.setActive("true");
         user.setSchoolId("5fe07e4fb064ca29931236a5");
 
-        bankAccountId = given()
+        user.setId(given()
                 .spec(reqSpec)
                 .cookies(cookies)
                 .body(user)
@@ -74,16 +74,17 @@ public class BankAccountFunctionalityPojo {
                 .body("integrationCode", equalTo(user.getIntegrationCode()))
                 .body("currency", equalTo(user.getCurrency()))
                 .body("schoolId", equalTo(user.getSchoolId()))
-                .extract().jsonPath().getString("id");
+                .extract().jsonPath().getString("id"));
+
 
     }
 
     @Test(priority = 2)
     public void addUserBankAnkAccountNegativeTest() {
 
-        user.setName("John Cena");
-        user.setIban("AC98 64");
-        user.setIntegrationCode("344");
+        user.setName("fdgdfgdfg ihhiih");
+        user.setIban("QT75 91");
+        user.setIntegrationCode("843");
         user.setCurrency("USD");
         user.setActive("true");
         user.setSchoolId("5fe07e4fb064ca29931236a5");
@@ -101,15 +102,14 @@ public class BankAccountFunctionalityPojo {
 
     }
 
-
     @Test(priority = 3)
     public void editUserBankAccountTest() {
 
         HashMap<String, String> updateReqBody = new HashMap<>();
-        updateReqBody.put("id", bankAccountId);
-        updateReqBody.put("name", "Cedi Osman");
-        updateReqBody.put("iban", "ZK52 29");
-        updateReqBody.put("integrationCode", "510");
+        updateReqBody.put("id", user.getId());
+        updateReqBody.put("name", "cvcx gff");
+        updateReqBody.put("iban", "ZC50 43");
+        updateReqBody.put("integrationCode", "017");
         updateReqBody.put("currency", "USD");
         updateReqBody.put("active", "true");
         updateReqBody.put("schoolId", "5fe07e4fb064ca29931236a5");
@@ -132,7 +132,7 @@ public class BankAccountFunctionalityPojo {
                 .spec(reqSpec)
                 .cookies(cookies)
                 .when()
-                .delete("/school-service/api/bank-accounts/" + bankAccountId)
+                .delete("/school-service/api/bank-accounts/" + user.getId())
                 .then()
                 .log().body()
                 .statusCode(200);
@@ -145,11 +145,10 @@ public class BankAccountFunctionalityPojo {
                 .spec(reqSpec)
                 .cookies(cookies)
                 .when()
-                .delete("/school-service/api/bank-accounts/" + bankAccountId)
+                .delete("/school-service/api/bank-accounts/" + user.getId())
                 .then()
                 .log().body()
                 .statusCode(400);
-
     }
 
 }
